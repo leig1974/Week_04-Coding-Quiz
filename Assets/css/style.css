@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    }
+
+
+html {
+    font-size: 20px;        
+    }
+
+body {
+    background-color: white;
+    font-family: 'Open Sans', 'sans-serif';
+}
+
+p {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+/*start here*/
+
+.container {
+    margin: 0 auto;
+    padding: 0 2rem;
+    justify-content: center;
+    align-items:center;
+    height: 100vh;
+}
+
+.quiz-box {
+    width: 600px;
+    background-color: grey;
+    color: black;
+    padding: 1rem 5rem 5rem 5rem;
+    border: 3 px solid var(--color-primary);
+    border-radius: 5px;
+    align-items: center;
+    display: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 200px;
+    margin-left: 300px;
+}
+
+    .quiz-box h1 {
+        background-color: var(--color-primary);
+        font-size: 20px;
+        text-align:  center;
+        color: black;
+        padding: 20px;
+        width: 100%;
+        border-radius: 3px;
+    }
+
+    .quiz-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .quiz-header #progress {
+        color: green;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    .quiz-header #count-down {
+        font-size: 15px;
+        font-weight: 700;
+        /* background-color: yellow; */
+        padding: 5px;
+        margin: 1px;
+        color: black;
+        border-radious: 3px;
+    }
+
+
+    .quiz-box #question {
+        font-size: 20px;
+        font-weight: 600;
+        color: pink;
+        border: 1px solid black;
+        border-width: 1px 0;
+        padding: 5px 0;
+    }
+
+    .buttons {
+        margin: 1.5rem 0 4rem 0;
+    }
+
+    .btn {
+        text-align: left;
+        background-color: blue;
+        width: 100%;
+        font-size: 15px;
+        color: black;
+        border: 1px solid violet;
+        border-radius: 5px;
+        margin: 7px 0;
+        padding: 10px;
+        outline: none;
+    }
+
+    .btn:hover {
+        cursor: pointer;
+        background-color: violet;
+        color: white;
+    }
+    .btn:active {
+        background-color: yellow;
+    }
+
+    #score {
+        color: black;
+        text-align: center;
+        font-size: 15px;
+        margin-bottom: 40px;
+    }
+
+.quiz-repeat {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.quiz-repeat a {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    background-color: orange;
+    padding: 1rem;
+    border-radius: 5px;
+    transition: all .3s;
+}
+
+.quiz-repeat a:hover {
+    background-color:violet;
+}
