@@ -3,23 +3,26 @@ class Quiz {
   constructor(questions) {
     this.score = 0;
     this.questions = questions;
-    this.questionsIndex = 0;
+    this.questionIndex = 0;
   }
 
   getQuestionIndex() {
-    return this.questions[this.questionsIndex];
+    return this.questions[this.questionIndex];
   }
 
+// method
   guess(answer) {
-    let questionObj = new Question()
-    if (questionObj.isCorrectAnswer(answer)) {
-      this.score++;
-    }
-    this.questionsIndex++;
+  // console.log(quiz);
+  // let questionObj = new Question()
+  // if (questionObj.isCorrectAnswer(answer)) {
+    if (this.getQuestionIndex().isCorrectAnswer(answer)) {
+  this.score++;
+  }
+  this.questionIndex++;
   }
 
   isEnded() {
-    return this.questionsIndex === this.questions.length;
+    return this.questionIndex === this.questions.length;
   }
 }
 
@@ -29,12 +32,13 @@ class Question {
     this.text = text;
     this.choices = choices;
     this.answer = answer;
-
-    function isCorrectAnswer(choice) {
+  }
+    
+  isCorrectAnswer(choice) {
       return this.answer === choice;
     }
   }
-}
+
 //display question
 function displayQuestion() {
   console.log(quiz);
@@ -55,17 +59,18 @@ function displayQuestion() {
     }
 
     showProgress();
-
+    
   }
 };
 
 //guess function
 function guess(id, guess) {
+  // console.log(quiz);
   let button = document.getElementById(id);
   button.onclick = function () {
-    // Quiz.guess(guess);
-    let quizobj = new Quiz()
-    quizobj.guess(guess)
+    quiz.guess(guess);
+    // let quizObj = new Quiz()
+    // quizObj.guess(guess)
     displayQuestion();
   }
 }
@@ -88,7 +93,7 @@ function showScores() {
     <a href="index.html">Take Quiz Again</a>
     </div>
 `;
-  var quizElement = document.getElementById("quiz");
+  let quizElement = document.getElementById("quiz");
   quizElement.innerHTML = quizEndHTML;
 }
 
