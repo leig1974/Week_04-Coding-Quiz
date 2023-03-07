@@ -1,4 +1,5 @@
-//creste a quiz
+//creste a quiz class
+// resources: class recordings, google search, internet, youtube turotials, github
 class Quiz {
   constructor(questions) {
     this.score = 0;
@@ -41,12 +42,12 @@ class Question {
 
 //display question
 function displayQuestion() {
-  console.log(quiz);
+  // console.log(quiz);
   if (quiz.isEnded()) {
     showScores();
   } else {
     //show next question
-    let questionElement = document.getElementById("question");
+    let questionElement =document.getElementById("question");
     questionElement.innerHTML = quiz.getQuestionIndex().text;
 
     //show options
@@ -67,7 +68,7 @@ function displayQuestion() {
 function guess(id, guess) {
   // console.log(quiz);
   let button = document.getElementById(id);
-  button.onclick = function () {
+  button.onclick = function() {
     quiz.guess(guess);
     // let quizObj = new Quiz()
     // quizObj.guess(guess)
@@ -100,32 +101,34 @@ function showScores() {
 //create quiz questions
 var questions = [
   new Question(
-    "A very useful tool used during development and debugging for printing content to the debugger is?", ["javaScript", "terminal/bash", "for loops", "console log"], "console log"
+    "A very useful tool used during development and debugging for printing content to the debugger is?", 
+    ["javaScript", "terminal/bash", "for loops", "console log"], 
+    "console log"
   ),
 
   new Question(
     "String values must be enclosed within ________ when being assigned to variables?",
     ["commas", "curly brackets", "quotes", "parentheses"],
-    "parentheses"
+    "quotes"
   ),
 
   new Question(
     "Arrays in JavaScript can be used to store?",
-    ["numbers and strings", "other errays", "qboolean", "all the the above"],
-    "numbers and strings"
+    ["numbers and strings", "other errays", "booleans", "all the the above"],
+    "all of the above"
   ),
 
   new Question(
     "The condition in an if/else statement is enclosed within ____?",
-    ["quotes", "curly bracket", "parentheses", "all the the above"],
-    "numbers and strings"
+    ["quotes", "curly brackets", "parentheses", "all the the above"],
+    "curly brackets"
   ),
 
   new Question(
     "Commonly used data types DO NOT include?",
     ["strings", "booleans", "palerts", "numbers"],
-    "strings"
-  ),
+    "palerts"
+  )
 ];
 
 
@@ -134,26 +137,66 @@ let quiz = new Quiz(questions);
 //display question
 displayQuestion();
 
+function questionClick() {
+  // check if user guessed wrong
+  if (this.value !== questions[currentQuestionIndex].answer) {
+    // penalize time
+    time -= 15;
+
+    if (time < 0) {
+      time = 0;
+    }
+
+    // display new time on page
+    timeEl.textContent = time;
+
+
+    feedbackEl.textContent = "Wrong!";
+  } else {
+
+    feedbackEl.textContent = "Correct!";
+  }
+
+  // flash right/wrong feedback on page for half a second
+  feedbackEl.setAttribute("class", "feedback");
+  setTimeout(function() {
+    feedbackEl.setAttribute("class", "feedback hide");
+  }, 1000);
+
+  // move to next question
+  currentQuestionIndex++;
+
+  // check if we've run out of questions
+  if (currentQuestionIndex === questions.length) {
+    quizEnd();
+  } else {
+    getQuestion();
+  }
+}
+
 
 //add a countdown
-let quizTime = 5000;
-// let quizTimeInMinutes = time * 60 * 60;
-// quizTime = quizTimeInMinutes;
+let time = 10;
+let quizTimeInMinutes = time * 60 * 60;
+quizTime = quizTimeInMinutes / 60;
 
 let counting = document.getElementById("count-down");
 
 function startCountdown() {
-  let quizTimer = setInterval(function () {
+  let quizTimer = setInterval(function() {
     if (quizTime <= 0) {
       clearInterval(quizTimer);
       showScores();
     } else {
       quizTime--;
-      // let sec = Math.floor(quizTime % 60);
-      // let min = Math.floor(quizTime / 60) % 60;
-      counting.innerHTML = `TIME: ${quizTime}`
+      let sec = Math.floor(quizTime % 60);
+      let min = Math.floor(quizTime / 60) % 60;
+      counting.innerHTML =`TIME: ${min} : ${sec}`;
     }
-  }, 1000)
-}
+    }, 1000)
+  }
 
 startCountdown();
+
+
+

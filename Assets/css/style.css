@@ -21,6 +21,21 @@ p {
 
 /*start here*/
 
+.header {
+    background-color: purple;
+    display: flex;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+.timer{
+    float: right;
+}
+
+.High Score {
+    float: left;
+}
+
 .container {
     margin: 0 auto;
     padding: 0 2rem;
@@ -61,7 +76,7 @@ p {
     }
 
     .quiz-header #progress {
-        color: green;
+        color: black;
         font-size: 15px;
         font-weight: 700;
     }
@@ -80,7 +95,7 @@ p {
     .quiz-box #question {
         font-size: 20px;
         font-weight: 600;
-        color: pink;
+        color: black;
         border: 1px solid black;
         border-width: 1px 0;
         padding: 5px 0;
@@ -92,10 +107,10 @@ p {
 
     .btn {
         text-align: left;
-        background-color: blue;
+        background-color: purple;
         width: 100%;
         font-size: 15px;
-        color: black;
+        color: white;
         border: 1px solid violet;
         border-radius: 5px;
         margin: 7px 0;
@@ -129,7 +144,7 @@ p {
     font-weight: 600;
     color: white;
     text-decoration: none;
-    background-color: orange;
+    background-color: purple;
     padding: 1rem;
     border-radius: 5px;
     transition: all .3s;

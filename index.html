@@ -9,6 +9,18 @@
     <title>Coding Quiz</title>
 </head>
 
+
+<body>
+    <header>
+        <!--main outer div-->
+        <div class="top_part1">
+            <!--View Highscores-->
+            <a>View Highscores</a>
+            <p>Timer: 00:00</p>
+        </div>
+    </header>
+</body>
+
 <body>
     <div class="container">
         <div class="quiz-box">
@@ -18,7 +30,7 @@
                     <p id="progress">Question x of y</p>
                     <p id="count-down">10</p>
                 </div>
-                <p id="question">What is your name?</p>
+                <p id="question">A very useful tool used during development and debugging for printing content to the debugger is?</p>
 
                 <div class="buttons">
                 <button class="btn" id="btn0">
@@ -36,7 +48,17 @@
             </div>
             <hr>
             <footer>
-                <p>finals</p>
+                <section id="highscore-section" class="hide">
+                    <div class="row">
+                        <div id="high-score" class="col-md-as">
+                        <h4>Finished!</h4>
+                        <h5> Your final score is <span id="final-score">0</span></h5>
+                        <label for="initials-area">Enter Initials:</label>
+                        <input type="text" name="initials-area" maxlength="4" id="initials">
+                        <button id="submit-button" type="submit">Submit</button=>
+                    </div>
+                </div>    
+                </section></p>
             </footer>
     <script src="./assets/js/script.js"></script>
     
