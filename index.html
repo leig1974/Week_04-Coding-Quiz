@@ -3,23 +3,31 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" , initial-scale=1.0>
-    <meta http-equiv="X-UA-Compatible" content="ie-edge">
-    <link rel="stylesheet" href="./Assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./Assets/css/style.css" type="text/css">
     <title>Coding Quiz</title>
 </head>
 
 
 <body>
     <header>
-        <!--main outer div-->
-        <div class="top_part1">
-            <!--View Highscores-->
-            <a>View Highscores</a>
-            <p>Timer: 00:00</p>
-        </div>
+        <!--View Highscores-->
+        <div class="scores">View Highscores</div>
+        <!-- Timer -->
+        <div class="timer">Time: <span id="time">0</span></div>
     </header>
 </body>
+
+<div class="introduction">
+    <div id="start-screen" class="start">
+        <h1>Coding Quiz Challenge</h1>
+        <p>
+            Try to asnwer the following code-related questions within the time limit. 
+            Keeep in mind that incorrect answers wil penalize your score time by ten seconds!
+            </p>
+    <button is="start">Sart Quiz!</button>
+</div>
 
 <body>
     <div class="container">
@@ -31,7 +39,6 @@
                     <p id="count-down">10</p>
                 </div>
                 <p id="question">A very useful tool used during development and debugging for printing content to the debugger is?</p>
-
                 <div class="buttons">
                 <button class="btn" id="btn0">
                     A. <span id="choice0"></span>
@@ -48,17 +55,19 @@
             </div>
             <hr>
             <footer>
-                <section id="highscore-section" class="hide">
-                    <div class="row">
-                        <div id="high-score" class="col-md-as">
+                <section>
+                    <div id="end-part" class="hide">
                         <h4>Finished!</h4>
-                        <h5> Your final score is <span id="final-score">0</span></h5>
+                        <p> Your final score is <span id="final-score"></span></p>
+                        <p>
                         <label for="initials-area">Enter Initials:</label>
                         <input type="text" name="initials-area" maxlength="4" id="initials">
-                        <button id="submit-button" type="submit">Submit</button=>
+                        <button id="submit-button" type="submit">Submit</button>
+                        </p>
                     </div>
-                </div>    
-                </section></p>
+                
+                </div id="feedback" class="feedback hide"></div>    
+                </section>
             </footer>
     <script src="./Assets/js/script.js"></script>
     

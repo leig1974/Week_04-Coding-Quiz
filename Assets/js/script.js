@@ -1,5 +1,20 @@
 //creste a quiz class
 // resources: class recordings, google search, internet, youtube turotials, github
+
+
+var highscores = document.querySelector('.scores');
+var timer = document.querySelector('#time');
+var startButton = document.querySelector('.start');
+var revealQuestion = document.querySelector('#questions');
+var questionTitle = document.querySelector('#question-title');
+var question = document.getElementById('choices'); 
+var endScreen = document.querySelector('#end-screen');
+var finalScore = document.querySelector('#final-score');
+var initials = document.querySelector('#initials'); 
+var feedback = document.querySelector('#feedback');
+
+console.log(finalScore);
+
 class Quiz {
   constructor(questions) {
     this.score = 0;
@@ -39,6 +54,12 @@ class Question {
       return this.answer === choice;
     }
   }
+
+  //event listener for start button
+  startButton.addEventListener("click", function () {
+    showQuestion();
+    startTimer ();
+  });
 
 //display question
 function displayQuestion() {
