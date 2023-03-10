@@ -12,6 +12,7 @@ var endScreen = document.querySelector('#end-screen');
 var finalScore = document.querySelector('#final-score');
 var initials = document.querySelector('#initials');
 var feedback = document.querySelector('#feedback');
+var submitButton = document.querySelector('#submit-button');
 
 console.log(finalScore);
 
@@ -123,14 +124,10 @@ function showScores() {
   let quizElement = document.getElementById("quiz");
   quizElement.innerHTML = quizEndHTML;
   // add event listener to submit button!!!!!
-  submitButton.addEventListener("click",  function () {
-    // removes page wrapper
-pageWrapper.setAttribute("style", "display: none;");
-showQuestions();
-startTimer ();
-});
-}
-
+  
+    
+  }
+  
 //create quiz questions
 var questions = [
   new Question(
@@ -209,7 +206,7 @@ function questionClick() {
 
 
 //add a countdown
-let time = 5;
+let time = 10;
 let quizTimeInMinutes = time * 60 * 60;
 quizTime = quizTimeInMinutes / 60;
 
@@ -293,9 +290,9 @@ function closeModal() {
   modalBackdrop.classList.remove('show');
 };
 
-init();
-
 // ---------------------------------------------------------------
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-});
+
+function storeScore (event) {
+  event.preventDefault()
+}
+submitButton.addEventListener('submit', storeScore);
