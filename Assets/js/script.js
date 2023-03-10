@@ -7,10 +7,10 @@ var timer = document.querySelector('#time');
 var startButton = document.querySelector('.start');
 var revealQuestion = document.querySelector('#questions');
 var questionTitle = document.querySelector('#question-title');
-var question = document.getElementById('choices'); 
+var question = document.getElementById('choices');
 var endScreen = document.querySelector('#end-screen');
 var finalScore = document.querySelector('#final-score');
-var initials = document.querySelector('#initials'); 
+var initials = document.querySelector('#initials');
 var feedback = document.querySelector('#feedback');
 
 console.log(finalScore);
@@ -26,15 +26,15 @@ class Quiz {
     return this.questions[this.questionIndex];
   }
 
-// method
+  // method
   guess(answer) {
-  // console.log(quiz);
-  // let questionObj = new Question()
-  // if (questionObj.isCorrectAnswer(answer)) {
+    // console.log(quiz);
+    // let questionObj = new Question()
+    // if (questionObj.isCorrectAnswer(answer)) {
     if (this.getQuestionIndex().isCorrectAnswer(answer)) {
-  this.score++;
-  }
-  this.questionIndex++;
+      this.score++;
+    }
+    this.questionIndex++;
   }
 
   isEnded() {
@@ -49,17 +49,17 @@ class Question {
     this.choices = choices;
     this.answer = answer;
   }
-    
-  isCorrectAnswer(choice) {
-      return this.answer === choice;
-    }
-  }
 
-  //event listener for start button
-  startButton.addEventListener("click", function () {
-    showQuestion();
-    startTimer ();
-  });
+  isCorrectAnswer(choice) {
+    return this.answer === choice;
+  }
+}
+
+//event listener for start button
+startButton.addEventListener("click", function () {
+  showQuestion();
+  startTimer();
+});
 
 //display question
 function displayQuestion() {
@@ -68,7 +68,7 @@ function displayQuestion() {
     showScores();
   } else {
     //show next question
-    let questionElement =document.getElementById("question");
+    let questionElement = document.getElementById("question");
     questionElement.innerHTML = quiz.getQuestionIndex().text;
 
     //show options
@@ -81,7 +81,7 @@ function displayQuestion() {
     }
 
     showProgress();
-    
+
   }
 };
 
@@ -89,7 +89,7 @@ function displayQuestion() {
 function guess(id, guess) {
   // console.log(quiz);
   let button = document.getElementById(id);
-  button.onclick = function() {
+  button.onclick = function () {
     quiz.guess(guess);
     // let quizObj = new Quiz()
     // quizObj.guess(guess)
@@ -114,16 +114,28 @@ function showScores() {
     <div class="quiz-repeat">
     <a href="index.html">Take Quiz Again</a>
     </div>
-`;
+    <p>
+    <label for="initials-area">Enter Initials:</label>
+    <input type="text" name="initials-area" maxlength="4" id="initials">
+    <button id="submit-button" type="submit">Submit</button>
+    </p>
+  `;
   let quizElement = document.getElementById("quiz");
   quizElement.innerHTML = quizEndHTML;
+  // add event listener to submit button!!!!!
+  submitButton.addEventListener("click",  function () {
+    // removes page wrapper
+pageWrapper.setAttribute("style", "display: none;");
+showQuestions();
+startTimer ();
+});
 }
 
 //create quiz questions
 var questions = [
   new Question(
-    "A very useful tool used during development and debugging for printing content to the debugger is?", 
-    ["javaScript", "terminal/bash", "for loops", "console log"], 
+    "A very useful tool used during development and debugging for printing content to the debugger is?",
+    ["javaScript", "terminal/bash", "for loops", "console log"],
     "console log"
   ),
 
@@ -180,7 +192,7 @@ function questionClick() {
 
   // flash right/wrong feedback on page for half a second
   feedbackEl.setAttribute("class", "feedback");
-  setTimeout(function() {
+  setTimeout(function () {
     feedbackEl.setAttribute("class", "feedback hide");
   }, 1000);
 
@@ -197,14 +209,14 @@ function questionClick() {
 
 
 //add a countdown
-let time = 10;
+let time = 5;
 let quizTimeInMinutes = time * 60 * 60;
 quizTime = quizTimeInMinutes / 60;
 
 let counting = document.getElementById("count-down");
 
 function startCountdown() {
-  let quizTimer = setInterval(function() {
+  let quizTimer = setInterval(function () {
     if (quizTime <= 0) {
       clearInterval(quizTimer);
       showScores();
@@ -212,12 +224,78 @@ function startCountdown() {
       quizTime--;
       let sec = Math.floor(quizTime % 60);
       let min = Math.floor(quizTime / 60) % 60;
-      counting.innerHTML =`TIME: ${min} : ${sec}`;
+      counting.innerHTML = `TIME: ${min} : ${sec}`;
     }
-    }, 1000)
-  }
+  }, 1000)
+}
 
 startCountdown();
 
+function scoreQuiz() {
+  clearInterval(timerInterval);
+  newScore = numCorrect/quizContentLength * 100;
+  quizStaticScoreEl.value = newScore;
+};
 
+function quizComplete() {
+  scoreQuiz();
+  quizQuestionLabelEl.textContent = 'Quiz Complete';
+  quizCurrentQuestionEl.textContent = ''; // UPD from inner HTML to textContent
+  quizSelectLabelEl.textContent = 'Save Your Score';
+  quizFieldsetEl.textContent = ''; // UPD from inner HTML to textContent
+  quizScoreFormEl.style.display = "block";
+  quizResultsEl.textContent = ''; // UPD from inner HTML to textContent
+  quizTimeRemainingEl.innerHTML = '<div class=""text-uppercase">PAUSED</div>'; //QUESTION: Is there a better way to do this that doesn't use inner HTML
+  buttonStatetoSave();
+};
 
+function storeUserInitialVar() {
+  if (userInitialsEl.value) {
+      userInitialsValue = userInitialsEl.value;
+      createScoreHistory();
+  } else {
+      //TO DO: Update This to inner HTML when I get this to run
+      alert("Please Enter Your Initials and Press Save");
+  }
+};
+
+function createScoreHistory() {
+  let scoreHistoryArr = [];
+  if (JSON.parse(localStorage.getItem('scoreHistory'))) {
+  scoreHistoryArr.push(JSON.parse(localStorage.getItem('scoreHistory'))) 
+  };
+  let currentScore = {
+      initials: userInitialsValue,
+      score: newScore
+  };
+  scoreHistoryArr.push(currentScore);
+  localStorage.setItem('scoreHistory', JSON.stringify(scoreHistoryArr));
+  renderHighScore();
+};
+
+function renderHighScore() {
+  locStoreInitials = JSON.parse(localStorage.getItem('initials'));
+  locStoreScore = JSON.parse(localStorage.getItem('score'));
+  if (!locStoreInitials || !locStoreScore) {
+      return;
+  } else {
+      //TO DO: Properly Populate Bootstrap Grid. For now, populate one field.
+      outputHSInitials1.innerHTML = locStoreInitials;
+      outputHSScore1.innerHTML = locStoreScore;
+  };
+};
+
+function closeModal() {
+  quizModal.classList.remove('show');
+  let body = document.getElementsByTagName('body')[0];
+  body.classList.remove('modal-open');
+  let modalBackdrop = document.querySelector('.modal-backdrop');
+  modalBackdrop.classList.remove('show');
+};
+
+init();
+
+// ---------------------------------------------------------------
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+});
