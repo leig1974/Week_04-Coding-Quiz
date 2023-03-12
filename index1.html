@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="assets/css/style.css" rel="stylesheet">
+    <title>Coding Quiz Challenge</title>
+</head>
+<body>
+    <div class="quiz-header">
+        <div>Welcome</div>
+        <!-- <div class="scores"><a href="highscores.html">Welcome to Quiz</a></div> -->
+        <div class="timer">Time: <span id="time"></span></div>
+
+    </div>
+    
+
+        <div id="quiz start" class="start">
+            <div id="start">
+                <h1>Coding Quiz Challenge</h1>
+                <p>Try to asnwer the following code-related questions within the time limit. 
+                    Keep in mind that incorrect answers wil penalize your score time by ten seconds!
+                </p>
+                <button onclick="startQuiz(this.id)" id="start">Start Quiz</button>
+            </div>
+
+            <div id="q1" class="question_default_display">
+                <p id="question">Commonly used data types DO NOT include:</p>
+                <button onclick=selectOption(this.id) class="btn options" id="btn0-1">
+                    1. strings<span id="choice0"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn options" id="btn1-1">
+                    2. booleons<span id="choice1"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn2-1">
+                    3. alerts<span id="choice2"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn3-1">
+                    4. numbers<span id="choice3"></span>
+                </button>
+                </div>
+
+            <div id="q2" class="question_default_display">
+                <p id="question"> A Very useful tool used during the developement
+                    and debugging for printing content to the debugger is?
+                </p>
+                <button onclick=selectOption(this.id) class="btn" id="btn0-2">
+                    1: JavaScript <span id="choice0"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn1-2">
+                    2: Terminal / Bash <span id="choice1"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn2-2">
+                    3: For Loops <span id="choice2"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn3-2">
+                    4: Console.log <span id="choice3"></span>
+                </button>
+            </div>          
+
+            <div id="q3" class="question_default_display">
+                <p id="question">Arrays in JavaScript can be used to store ______ ?</p>
+                <button onclick=selectOption(this.id) class="btn" id="btn0-3">
+                    1. Numbers / Strings <span id="choice0"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn1-3">
+                    2. Other Errors <span id="choice1"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn2-3">
+                    3. Booleans <span id="choice2"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn3-3">
+                    4. All of the above <span id="choice3"></span>
+                </button>
+            </div>    
+
+            <div id="q4" class="question_default_display">
+                <p id="question">The Condition in an if / else statement is enclosed within together?</p>
+                <button onclick=selectOption(this.id) class="btn" id="btn0-4">
+                    1. Quotes <span id="choice0"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn1-4">
+                    2. Curley Brackets <span id="choice1"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn2-4">
+                    3. Parenthesis<span id="choice2"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn3-4">
+                    4. Square Brackets <span id="choice3"></span>
+                </button>
+            </div>    
+
+            <div id="q5" class="question_default_display">
+                <p id="question">String values must be enclosed within _____ when being a assigned to a variables?</p>
+                <button onclick=selectOption(this.id) class="btn" id="btn0-5">
+                    1. Commas <span id="choice0"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn1-5">
+                    2. Curley Brackets  <span id="choice1"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn2-5">
+                    3. Quotes <span id="choice2"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn3-5">
+                    4. Parenthesis <span id="choice3"></span>
+                </button>
+            </div> 
+
+            <div id="q6" class="question_default_display">
+                <p id="question">Why "Hello World" was invented?</p>
+                <button onclick=selectOption(this.id) class="btn" id="btn0-6">
+                    1. Don't know <span id="choice0"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn1-6">
+                    2. Orange fell off to sciencet's forehead<span id="choice1"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn2-6">
+                    3. Neuton got in his imagination<span id="choice2"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn3-6">
+                    4. It was written on backside on student's shirt <span id="choice3"></span>
+                </button>
+            </div> 
+
+            <div id="q7" class="question_default_display">
+                <p id="question">What color do most of the developers prefer in their IDE?</p>
+                <button onclick=selectOption(this.id) class="btn" id="btn0-7">
+                    1. White & Black <span id="choice0"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn1-7">
+                    2. Blue <span id="choice1"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn2-7">
+                    3. Brown<span id="choice2"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn3-7">
+                    4. Pink<span id="choice3"></span>
+                </button>
+            </div> 
+
+            <div id="q8" class="question_default_display">
+                <p id="question">Where can we style change?</p>
+                <button onclick=selectOption(this.id) class="btn" id="btn0-8">
+                    1. Css <span id="choice0"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn1-8">
+                    2. JavaScript<span id="choice1"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn2-8">
+                    3. HTML<span id="choice2"></span>
+                </button>
+                <button onclick=selectOption(this.id) class="btn" id="btn3-8">
+                    4. PAINT <span id="choice3"></span>
+                </button>
+            </div> 
+            <div id="initialsiii" class="allDone">
+                <h1>All Done</h1>
+                <div>
+                    <p>Total Scores: </p><p id="totalScorees"></p>
+                </div>
+                <div>
+                    <input  id="nameiii" placeholder="Write your Initials">
+                </div>
+                <button onclick="allDoneFunction(this.id)" id="allDoneBtn">Submit</button>
+            </div>
+
+            <div id="finalStage" class="allFinal">
+                <h1>High Scores</h1>
+                <div id = "hideHighScore">
+                    <p>Initials: </p><p id="initials"></p>
+                    <p>Total Scores: </p><p id="totalScores"></p>
+                </div>
+                <button onclick="reloadBtn(this.id)" id="backBtn">Back</button>
+                <button onclick="hideScores(this.id)" id="clearBtn">Clear Scores</button>
+            </div>
+        </div>
+<script src="./Assets/js/script2.js"></script>
+<script>
+
+    // function startQuiz(id){
+    //     let startQuizLayout = document.getElementById(id);
+    //     startQuizLayout.style.display = "none";
+    
+    //     let storingQ1Element = document.getElementById("q1");
+    //     storingQ1Element.style.display = "block";
+    // }
+</script>
+
+
+</body>
+<!-- <button id="previous">Previous Question</button>
+<button id="next">Next Question</button>
+<button id="submit">Submit Quiz</button>
+<div id="results"></div> -->
+
+</html>
+
