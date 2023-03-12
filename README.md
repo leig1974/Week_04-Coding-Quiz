@@ -1,3 +1,11 @@
+
+Additional Comments:
+ I have tried multiple times to redo this App. 
+This version was created with the help of private tutor, in regards with javascript and css and html. 
+ I am working with private tutor due to fact, that I have no previous experience in IT field and it is difficult for me to follow material presented in class due to fact that it is large volume and  very quick way of teaching.
+ ---------------------
+
+
 # 04 Web APIs: Code Quiz
 
 ## Your Task
